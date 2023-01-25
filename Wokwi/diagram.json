@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "author": "Anggra Alhera Nasmita Utomo",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 69.43, "left": -65.04, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo1", "top": -46.57, "left": 202.37, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 242.8,
+      "left": 124.74,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 93.14,
+      "left": 310.3,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -151.83,
+      "left": -24.73,
+      "attrs": { "distance": "11" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 332.79,
+      "left": 53,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "ultrasonic1:TRIG", "esp:D13", "#8f4814", [ "v11.12", "h-106.41", "v150.76" ] ],
+    [ "ultrasonic1:ECHO", "esp:D12", "orange", [ "v-9.19", "h-130.86", "v155.72" ] ],
+    [ "ultrasonic1:GND", "esp:GND.2", "black", [ "v-24.09", "h-160.72", "v196.34" ] ],
+    [ "ultrasonic1:VCC", "esp:3V3", "red", [ "v18.34", "h70.59", "v163.85" ] ],
+    [ "servo1:GND", "esp:GND.1", "black", [ "h-19.59", "v96.12" ] ],
+    [ "servo1:V+", "esp:VIN", "red", [ "h-51.8", "v156.62", "h-163.63", "v-55.83" ] ],
+    [ "servo1:PWM", "esp:D5", "green", [ "h0" ] ],
+    [ "bz1:1", "esp:GND.1", "black", [ "v-49.87", "h-107.23", "v-17.58" ] ],
+    [ "bz1:2", "esp:D4", "green", [ "v0" ] ],
+    [ "led1:C", "r1:2", "black", [ "v0" ] ],
+    [ "r1:1", "esp:GND.1", "black", [ "v-119.88", "h20.06" ] ],
+    [ "led1:A", "esp:D2", "green", [ "v-80.08", "h-22.01" ] ]
+  ],
+  "dependencies": {}
+}
